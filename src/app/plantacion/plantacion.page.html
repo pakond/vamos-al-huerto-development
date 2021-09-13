@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Parcela: {{parcela?.nombre}}</ion-title>
+
+    <!-- Hamburger -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" scrollX="true">
+  <ion-item>
+    <ion-button (click)="calendario()">Calendario</ion-button>
+    <ion-label style="text-align: right;">Acciones:</ion-label>
+    <ion-select [(ngModel)]="espAPlantar" (ionChange)="selEspecie()" placeholder="Elige acción">
+      <ion-select-option value=0>COSECHAR&nbsp;&#10008;</ion-select-option>
+      <ion-select-option disabled>PLANTAR ESPECIE:</ion-select-option>
+      <ion-select-option *ngFor="let e of listaEsp" value="{{e.nombre}}">
+        <!-- <img *ngIf="e.icono" [src]="e.icono"/> -->
+        {{'&nbsp;&nbsp;&#9752;&nbsp;&nbsp;'+e.nombre}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div *ngIf="[espAPlantar]">
+    <table class="parcela">
+      <tr *ngFor="let y of casilla; index as fila">
+        <th *ngFor="let x of y; index as columna" style="border: 1px solid black;">
+          <div *ngIf="casilla[fila][columna]; else sinIcono" class="casilla" (click)="plantar(fila,columna)">
+            <!-- <img [src]="'./assets/iconos-svg/'+casilla[fila][columna]"
+            [alt]="casilla[fila][columna]" class="icono-plantas"/> -->
+            <div [innerHTML]="casilla[fila][columna]"></div>
+          </div>
+          <ng-template #sinIcono>
+            <div class="casilla" (click)="plantar(fila,columna)"></div>
+          </ng-template>
+        </th>
+      </tr>
+    </table>
+  </div>
+</ion-content>

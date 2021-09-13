@@ -1,0 +1,82 @@
+<ion-buttons slot="start">
+  <ion-button (click)="dismiss()"
+    ><ion-icon name="close"></ion-icon>
+  </ion-button>
+</ion-buttons>
+
+<ion-card>
+  <ion-item>
+    <ion-avatar slot="start">
+      <img
+        *ngIf="especie.icono"
+        [src]="'./assets/iconos-svg/' + especie.icono"
+        class="icono-plantas"
+        width="35px"
+        height="35px"
+      />
+    </ion-avatar>
+    <ion-label>
+      <h1>{{ especie.nombre }}</h1>
+      <p>{{ especie.categoria }}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-card-content>
+    <ion-item>
+     
+      <ion-row>
+        <ion-col *ngFor="let foto of fotos; index as position">
+          <img [src]="foto.data" alt="ion"   
+          height="120px"/>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-item>
+   <ion-content   [scrollEvents]="true" class="description">
+      {{ especie.descripcion }}
+    </ion-content>
+</ion-item>
+    <ion-footer>
+      <ion-row>
+        <ion-col center text-center>
+          <div>
+            <ion-icon name="code" color="success"> </ion-icon> Espacio
+            <div class="bold">{{ especie.espacio }} cm</div>
+          </div>
+        </ion-col>
+        <ion-col center text-center>
+          <div>
+            <ion-icon name="arrow-down" color="success"></ion-icon> Profundidad
+            <div class="bold">{{ especie.profundidad }} cm</div>
+          </div>
+        </ion-col>
+        <ion-col center text-center>
+          <div> 
+            <ion-icon name="rainy"color="success"></ion-icon> Riego cada
+            <div class="bold">{{ especie.riego }} dias</div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col center text-center>
+          <div>
+            <ion-icon name="partly-sunny" color="success"></ion-icon> Necesidad de la luz
+            <div  class="bold">{{ especie.luz }}</div>
+          </div>
+        </ion-col>
+        <ion-col center text-center>
+          <div>
+            <ion-icon name="calendar" color="success"></ion-icon> Meses de plantacion
+            <div class="bold" >{{ meses.join(', ') }}</div>
+          </div>
+        </ion-col>
+        <ion-col center text-center>
+          <div>
+            <ion-icon name="leaf" color="success"></ion-icon> Tiempo de cultivo
+            <div class="bold">{{ especie.tiempoCultivo }} dias</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card-content>
+</ion-card>

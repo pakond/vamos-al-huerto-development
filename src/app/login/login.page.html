@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-img src="assets/splash.png" style="width: 200px; margin: auto;"></ion-img>
+   
+  <ion-item lines="full">
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="text" #email required></ion-input>
+  </ion-item> 
+
+  <ion-item lines="full">
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" #password required></ion-input>
+  </ion-item>
+
+  <ion-row>
+    <ion-col> 
+    <ion-button type="submit" (click)="logIn(email, password)" expand="block">Login</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-item>
+    <ion-text>No dispones de una cuenta? <a routerLink="/registro">Registrarse</a></ion-text>
+  </ion-item>
+
+  <!-- <ion-item>
+    <ion-text>Olvidaste la contraseña? <a routerLink="/contrasena">Recuperarla</a></ion-text>
+  </ion-item> -->
+
+</ion-content>

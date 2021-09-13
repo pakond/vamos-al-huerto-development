@@ -1,0 +1,202 @@
+<div *ngIf="isDataAvailable"> 
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ especie.nombre }}</ion-title>
+    <!-- Hamburger -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form [formGroup]="changeEspecieForm" (ngSubmit)="changeEspecie(especie)" novalidate>
+    <ion-item-group>
+      <ion-item>
+        <ion-label position="floating">Nombre de la planta</ion-label>
+        <ion-input
+        formControlName="nombre"
+          type="text"
+          required
+        >
+        </ion-input>
+      </ion-item>
+      <span
+        class="error ion-padding"
+        *ngIf=" submitted && errorControl.nombre.errors?.required"
+      >
+        Introduce nombre de la planta
+      </span>
+
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input
+          formControlName="descripcion"
+          type="text"
+          placeholder="Descripción de la planta"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label  position="floating">Categoría</ion-label>
+        <ion-select
+          class="categoria-select"
+          formControlName="categoria"
+          
+        >
+          <ion-select-option *ngFor="let categoria of categorias">
+            {{categoria}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item class="flex">
+        <ion-label position="floating">
+          <ion-icon name="code"></ion-icon>Espacio (cm)
+        </ion-label>
+        <ion-range
+          formControlName="espacio"
+          min="10"
+          max="120"
+          step="10"
+          value={{defaultEspacio}}
+          snaps
+          color="success"
+          pin="true"
+          required
+        >
+          <ion-label class="range-label" slot="start" size="small">10</ion-label>
+          <ion-label class="range-label" slot="end" name="sunny">120</ion-label>
+        </ion-range>
+      </ion-item>
+      <span class="error ion-padding" *ngIf=" submitted && errorControl.espacio.errors?.required">
+        Introduce el espacio de la planta
+        </span>
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="arrow-down"></ion-icon>Profundidad de plantación (cm)</ion-label
+        >
+        <ion-input
+          formControlName="profundidad"
+          type="text"
+          placeholder="Profundidad de plantación"
+        
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="rainy"></ion-icon>Riego cada (días)
+        </ion-label>
+        <ion-input formControlName="riego" type="number"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="partly-sunny"></ion-icon>Necesidad de luz
+        </ion-label>
+        <ion-select class="custom-select" formControlName="luz">
+          <ion-select-option *ngFor="let luz of luces">{{luz}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="calendar"></ion-icon>Meses de plantación
+          </ion-label>
+        <ion-select multiple="true" formControlName="mesesPlantacion">
+          <ion-select-option *ngFor="let mes of meses">{{mes}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">
+          <ion-icon name="leaf"></ion-icon> Tiempo de cultivo (días)</ion-label
+        >
+        <ion-input
+          formControlName="tiempoCultivo"
+          type="number"
+          placeholder="Tiempo de cultivo"
+        >
+        </ion-input>
+      </ion-item>
+      <span
+        class="error ion-padding"
+        *ngIf=" submitted && errorControl.tiempoCultivo.errors?.required"
+      >
+        Hay que introducir tiempo de cultivo
+      </span>
+    </ion-item-group>
+
+    <ion-list>
+      <ion-radio-group formControlName="icono">
+        <ion-list-header>
+          <ion-label>Elegir icono de la planta</ion-label>
+        </ion-list-header>
+
+        <ion-item *ngFor="let icon of iconos" class="icon-group">
+          <ion-label>
+            <img
+              [src]="'./assets/iconos-svg/' + icon.imageUrl"
+              class="icono-plantas"
+              width="35px"
+              height="35px" />
+          </ion-label>
+          <ion-radio  [value]="icon.imageUrl"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-item-group>
+      <ion-item>
+        <ion-label>Añadir foto de la planta</ion-label>
+
+        <ion-row>
+          <ion-col>
+            <ion-button
+              color="primary"
+              expand="block"
+              (click)="addPhoto()"
+            >
+              <ion-icon name="camera"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size="6"
+          *ngFor="let foto of fotos index as position"
+        >
+          <ion-img
+            [src]="foto.data"
+            (click)="showActionSheet(foto.$key, position)"
+          ></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" expand="block"
+          >Modificar especie</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)= "cancel()"
+          >Cancelar</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+</div>

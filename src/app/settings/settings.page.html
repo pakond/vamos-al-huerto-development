@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>settings</ion-title>
+
+    <!-- Hamburger -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label>Idioma</ion-label>
+    <ion-select [placeholder]="environments.language" #language (ionChange)="newLanguage(language.value)">
+      <ion-select-option value="ingles">Ingles</ion-select-option>
+      <ion-select-option value="español">Español</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+</ion-content>

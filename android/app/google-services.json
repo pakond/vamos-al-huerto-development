@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1061779991576",
+    "firebase_url": "https://vamos-al-huerto-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "vamos-al-huerto",
+    "storage_bucket": "vamos-al-huerto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061779991576:android:e22cee65e129fcb4cbe76d",
+        "android_client_info": {
+          "package_name": "org.vamosalhuerto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061779991576-fdoh1dkdeh9kv60t5vvr67ht7bb6gh0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0zvfuLFfxlHiKc6BCPD7zwDXGDO-W1ZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1061779991576-fdoh1dkdeh9kv60t5vvr67ht7bb6gh0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

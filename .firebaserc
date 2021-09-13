@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "vamos-al-huerto": {
+      "hosting": {
+        "app": [
+          "vamos-al-huerto"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "vamos-al-huerto"
+  }
+}

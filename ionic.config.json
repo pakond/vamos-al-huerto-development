@@ -1,0 +1,7 @@
+{
+  "name": "Vamos al Huerto",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

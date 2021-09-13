@@ -1,0 +1,29 @@
+ion-col {
+    border: 1px solid grey;
+    text-align: center;
+    background-color: saddlebrown;
+    width: 5px;
+    height: 5px;
+  }
+
+  ion-row {
+    height: 5px;
+}
+
+.container{
+    flex-wrap: nowrap;
+    overflow-x: scroll!important;
+    //overflow-y: scroll!important;
+    word-wrap: break-word;
+}
+
+.parcela {
+    border: 1px solid grey;
+    text-align: center;
+    background-color: saddlebrown;
+}
+
+.casilla {
+    width: 35px;
+    height: 35px;
+}

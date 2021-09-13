@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Especies</ion-title>
+
+    <!-- Hamburger -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item
+      *ngFor="let especie of this.especiesArray "
+      (click)="createModal(especie)"
+    >
+      <ion-label>
+        <img
+          *ngIf="especie.icono"
+          [src]="'./assets/iconos-svg/' +  especie.icono"
+          class="icono-plantas"
+          width="35px"
+          height="35px"
+        />
+      </ion-label>
+      <ion-label>{{ especie.nombre }}</ion-label>
+
+      <ion-button
+        size="small"
+        color="success"
+        style="float: right; margin-bottom: 10px" 
+        (click)="editarEspecie(especie.nombre);$event.stopPropagation()"
+      >      
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+
+      <ion-button
+        size="small"
+        color="danger"
+        style="float: right; margin-bottom: 10px"
+        (click)="alertBorrarEspecie(especie.$key, especie.nombre);$event.stopPropagation()"
+      >
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+
+   </ion-item>
+  </ion-list>
+
+    <ion-button color="success"  expand="full" (click)="anadirEspecie()">
+      <ion-icon name="add-outline"></ion-icon>
+      Añadir Especie
+    </ion-button>
+
+    <h5>Grafica de uso de especies</h5>
+    <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [chartType]="barChartType"
+      [colors]="colors"
+    >
+    </canvas>          
+</ion-content>

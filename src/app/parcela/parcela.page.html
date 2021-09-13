@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Parcelas</ion-title>    
+    
+    <!-- Hamburger -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let parcela of parcelas">
+    <ion-card-header>
+      <ion-card-subtitle>Nombre: <strong>{{ parcela.nombre | titlecase }}</strong></ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Alto: {{ parcela.alto }}m
+      <br>
+      Ancho: {{ parcela.ancho }}m
+      <br>
+<!--       <div *ngIf="parcela.lat"> ({{ posicionParcela.lat| number : '1.5' }} / {{ parcela.lng | number : '1.5'}})</div>
+ -->      <ion-button size="small" color="danger" style="float: right; margin-bottom: 10px;" (click)="alertBorrarParcela(parcela.$key, parcela.nombre)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+      <ion-button size="small" color="warning" style="float: right; margin-bottom: 10px;" (click)="geoParcela(parcela.nombre)"><ion-icon name="location-outline"></ion-icon></ion-button>
+      <ion-button size="small" color="success" style="float: right; margin-bottom: 10px;" (click)="irParcela(parcela.nombre)"><ion-icon name="log-out-outline"></ion-icon></ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button color="success"  expand="full" (click)="alertAnadirParcela()">
+    <ion-icon name="add-outline"></ion-icon>
+    Añadir Parcela
+  </ion-button>
+
+</ion-content>
